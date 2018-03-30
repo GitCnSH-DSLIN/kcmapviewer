@@ -1,10 +1,14 @@
 program Project1;
 
+{$mode objfpc}{$H+}
+{$define UseCThreads}
+
 uses
-  Forms,
-  Interfaces,
-  sysutils,
-  Unit1 in 'Unit1.pas' {Form1},
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+  {$ENDIF}{$ENDIF}
+  Forms, Interfaces, sysutils,
+  Unit1 in 'Unit1.pas', kcmapviewerpckg {Form1},
   kcMapViewer in 'kcMapViewer.pas';
 
 {$R *.res}

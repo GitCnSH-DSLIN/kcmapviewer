@@ -472,7 +472,7 @@ begin
   inherited;
   FUseThreads := False;
 
-  FPool := TThreadPool.Create;
+  FPool := TThreadPool.Create(1);
   FBitmap := TBitmap.Create;
 
   FCache := TStringList.Create;
