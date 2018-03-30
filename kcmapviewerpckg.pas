@@ -2,20 +2,22 @@
   This source is only used to compile and install the package.
  }
 
-unit kcMapViewerPckg; 
+unit kcMapViewerPckg;
 
+{$warn 5023 off : no warning about unused units}
 interface
 
 uses
-  kcMapViewerInstall, LazarusPackageIntf;
+  kcMapViewerInstall, kcMapViewerGLGeoNames, kcThreadPool, kcMapViewerDEFpc, 
+  kcMapViewer, LazarusPackageIntf;
 
 implementation
 
-procedure Register; 
+procedure Register;
 begin
-  RegisterUnit('kcMapViewerInstall', @kcMapViewerInstall.Register); 
-end; 
+  RegisterUnit('kcMapViewerInstall', @kcMapViewerInstall.Register);
+end;
 
 initialization
-  RegisterPackage('kcMapViewerPckg', @Register); 
+  RegisterPackage('kcMapViewerPckg', @Register);
 end.

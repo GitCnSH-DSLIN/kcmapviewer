@@ -837,12 +837,14 @@ begin
           begin
             Inc(ValidCount);
             Graphic.Canvas.Brush.Style := bsClear;
+            {
             if (img is TPortableNetworkGraphic) and (FSource in [msGoogleHybrid, msGooglePhysicalHybrid, msYahooHybrid]) then
             begin // fix bug when drawing completly transparent png
               if CalcPixels(TPortableNetworkGraphic(img)) > 0 then
                 Graphic.Canvas.Draw(0, 0, img);
             end
             else
+            }
               Graphic.Canvas.Draw(0, 0, img);
             img.Free;
           end;

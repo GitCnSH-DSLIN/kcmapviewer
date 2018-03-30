@@ -1,30 +1,52 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
-  <Package Version="3">
+  <Package Version="4">
     <PathDelim Value="\"/>
     <Name Value="kcMapViewerPckg"/>
+    <Type Value="RunAndDesignTime"/>
+    <AddToProjectUsesSection Value="True"/>
+    <Author Value="Maciej Kaczkowski, Dimitrios Chr. Ioannidis"/>
     <CompilerOptions>
-      <Version Value="10"/>
+      <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
         <OtherUnitFiles Value="..\synapse\lib"/>
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
-      <Other>
-        <CompilerMessages>
-          <UseMsgFile Value="True"/>
-        </CompilerMessages>
-        <CompilerPath Value="$(CompPath)"/>
-      </Other>
     </CompilerOptions>
-    <Files Count="1">
+    <Description Value=" TMapViewer is a simple component that supports the most popular maps using native graphic control.
+* supports Google Maps (Normal, Satellite, Hybrid, Physical, Physical hybrid)
+* supports OpenStreet based maps (OpenStreetMap Mapnik, OpenStreetMap Osmrenderer, OpenCycleMap)
+* supports Virtual Earth maps (Normal, Aerial, Road, Hybrid)
+* supports Yahoo maps (Normal, Satellite, Hybrid)
+* lots of debug information
+* pluggable download engine (fphttpclient, native win32. synapse)
+* disk caching"/>
+    <License Value="GPL-2 or later"/>
+    <Version Minor="1"/>
+    <Files Count="5">
       <Item1>
         <Filename Value="kcMapViewerInstall.pas"/>
         <HasRegisterProc Value="True"/>
         <UnitName Value="kcMapViewerInstall"/>
       </Item1>
+      <Item2>
+        <Filename Value="kcMapViewerGLGeoNames.pas"/>
+        <UnitName Value="kcMapViewerGLGeoNames"/>
+      </Item2>
+      <Item3>
+        <Filename Value="kcThreadPool.pas"/>
+        <UnitName Value="kcThreadPool"/>
+      </Item3>
+      <Item4>
+        <Filename Value="kcmapviewerdefpc.pas"/>
+        <UnitName Value="kcMapViewerDEFpc"/>
+      </Item4>
+      <Item5>
+        <Filename Value="kcMapViewer.pas"/>
+        <UnitName Value="kcMapViewer"/>
+      </Item5>
     </Files>
-    <Type Value="RunAndDesignTime"/>
     <RequiredPkgs Count="2">
       <Item1>
         <PackageName Value="LCL"/>

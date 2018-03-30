@@ -1,5 +1,11 @@
 unit kcMapViewerInstall;
-{$i kcMapViewer.inc}
+
+{$I kcMapViewer.inc}
+
+{ If you want to use the Synapse download engine activate the define
+  ENABLE_SYNAPSE in the include file and add the package laz_synapse
+  to the package requirements }
+
 interface
 
 procedure Register;
@@ -7,15 +13,17 @@ procedure Register;
 implementation
 
 uses
-  Classes, LResources, kcMapViewer, kcMapViewerGLGeoNames
+  Classes, LResources, kcMapViewer, kcMapViewerGLGeoNames, kcMapViewerDEFpc
   {$IFDEF ENABLE_SYNAPSE}, kcMapViewerDESynapse{$ENDIF ENABLE_SYNAPSE}
-  {$IFDEF WIN32}, kcMapViewerDEWin32{$ENDIF WIN32};
+  {$IFDEF WINDOWS}, kcMapViewerDEWin32{$ENDIF WINDOWS}
+  ;
 
 procedure Register;
 begin
-  RegisterComponents('Misc',[TMapViewer, TMVGLGeoNames
+  RegisterComponents('Misc',[TMapViewer, TMVGLGeoNames, TMVDEFPC
   {$IFDEF ENABLE_SYNAPSE}, TMVDESynapse{$ENDIF ENABLE_SYNAPSE}
-  {$IFDEF WIN32}, TMVDEWin32{$ENDIF WIN32}]);
+  {$IFDEF WINDOWS}, TMVDEWin32{$ENDIF WINDOWS}]);
+
   LazarusResources.Add('TMapViewer','PNG',[
     #137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#0#24#0#0#0#24#4#3#0#0#0#18'Y '#203#0
     +#0#0'0PLTE'#4'z'#252#220#198#132#188#254#164#196#194#180#236#226#132#228#217
@@ -33,6 +41,7 @@ begin
     +#165#5#228't'#28#188'{'#215#238'.T'#25#12#128'8'#200'A'#5#0#141#193#170'R'
     +#227'S'#151#245#0#0#0#0'IEND'#174'B`'#130
   ]);
+
   LazarusResources.Add('TMVGLGeoNames','PNG',[
     #137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#0#24#0#0#0#24#4#3#0#0#0#18'Y '#203#0
     +#0#0'0PLTE'#224#229#255#30#134#252#0#0#0#188#254#164#253#0#0#0#25#255#0#0#0#0
@@ -44,6 +53,7 @@ begin
     +#211'"'#198'VDcH'#186'v'#23#170'if'#246#214'DZ'#195'e'#252#170#7#247'T'#14'&'
     +'z'#180#213'C'#0#0#0#0'IEND'#174'B`'#130
   ]);
+
   {$IFDEF ENABLE_SYNAPSE}
   LazarusResources.Add('TMVDESynapse','PNG',[
     #137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#0#24#0#0#0#24#4#3#0#0#0#18'Y '#203#0
@@ -57,6 +67,7 @@ begin
     +#15#229'h'#18#201'5'#18#156#144#0#0#0#0'IEND'#174'B`'#130
   ]);
   {$ENDIF ENABLE_SYNAPSE}
+
   {$IFDEF WIN32}
   LazarusResources.Add('TMVDEWin32','PNG',[
     #137'PNG'#13#10#26#10#0#0#0#13'IHDR'#0#0#0#24#0#0#0#24#4#3#0#0#0#18'Y '#203#0
