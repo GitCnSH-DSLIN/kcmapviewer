@@ -39,11 +39,11 @@ type
   protected
     procedure DoDownloadFile(const Url: string; str: TStream); override;
   published
-    property UseProxy: Boolean read FUseProxy write FUseProxy;
-    property ProxyHost: string read FProxyHost write FProxyHost;
-    property ProxyPort: Integer read FProxyPort write FProxyPort;
-    property ProxyUsername: string read FProxyUsername write FProxyUsername;
-    property ProxyPassword: string read FProxyPassword write FProxyPassword;
+    property UseProxy;
+    property ProxyHost;
+    property ProxyPort;
+    property ProxyUsername;
+    property ProxyPassword;
   end;
 
 implementation

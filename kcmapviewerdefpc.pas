@@ -37,7 +37,16 @@ type
   TMVDEFPC = class(TCustomDownloadEngine)
   protected
     procedure DoDownloadFile(const Url: string; str: TStream); override;
+  {$IF FPC_FullVersion >= 30101}
+  published
+    property UseProxy;
+    property ProxyHost;
+    property ProxyPort;
+    property ProxyUsername;
+    property ProxyPassword;
+  {$ENDIF}
   end;
+
 
 implementation
 
@@ -48,17 +57,25 @@ uses
 
 procedure TMVDEFPC.DoDownloadFile(const Url: string; str: TStream);
 var
-  FHttp: TFPHTTPClient;
+  http: TFpHttpClient;
 begin
   inherited;
-  FHttp := TFPHTTPClient.Create(nil);
+  http := TFpHttpClient.Create(nil);
   try
-    FHttp.AllowRedirect := true;
-    FHttp.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
-    FHTTP.Get(Url, str);
+    http.AllowRedirect := true;
+    http.AddHeader('User-Agent','Mozilla/5.0 (compatible; fpweb)');
+   {$IF FPC_FullVersion >= 30101}
+    if UseProxy then begin
+      http.Proxy.Host := ProxyHost;
+      http.Proxy.Port := ProxyPort;
+      http.Proxy.UserName := ProxyUserName;
+      http.Proxy.Password := ProxyPassword;
+    end;
+   {$ENDIF}
+    http.Get(Url, str);
     str.Position := 0;
   finally
-    FHttp.Free;
+    http.Free;
   end;
 end;
 

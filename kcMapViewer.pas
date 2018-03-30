@@ -59,10 +59,20 @@ type
 
   TCustomDownloadEngine = class(TComponent)
   private
+    FProxyHost: string;
+    FProxyPassword: string;
+    FProxyPort: Integer;
+    FProxyUsername: string;
+    FUseProxy: Boolean;
     FOnAfterDownload: TOnAfterDownloadEvent;
     FOnBeforeDownload: TOnBeforeDownloadEvent;
   protected
     procedure DoDownloadFile(const Url: string; str: TStream); virtual;
+    property UseProxy: Boolean read FUseProxy write FUseProxy default false;
+    property ProxyHost: string read FProxyHost write FProxyHost;
+    property ProxyPort: Integer read FProxyPort write FProxyPort;
+    property ProxyUsername: string read FProxyUsername write FProxyUsername;
+    property ProxyPassword: string read FProxyPassword write FProxyPassword;
   public
     constructor Create(AOwner: TComponent); override;
     procedure DownloadFile(const Url: string; str: TStream); virtual;
