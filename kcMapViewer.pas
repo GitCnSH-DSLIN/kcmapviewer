@@ -169,11 +169,19 @@ type
     property GeolocationEngine: TCustomGeolocationEngine read FGeolocationEngine write FGeolocationEngine;
     property DoubleBuffering: Boolean read FDoubleBuffering write FDoubleBuffering;
     property Align;
+    property Anchors;
+    property BorderSpacing;
+    property Hint;
+    property PopupMenu;
     property OnMouseDown;
     property OnMouseMove;
     property OnMouseUp;
+    property OnMouseWheel;
+    property OnMouseWheelDown;
+    property OnMouseWheelUp;
     property OnClick;
     property OnDblClick;
+    property OnResize;
   end;
 
 implementation

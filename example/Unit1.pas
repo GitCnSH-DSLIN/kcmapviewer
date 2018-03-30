@@ -10,7 +10,7 @@ uses
   {$IFDEF WINDOWS}, kcMapViewerDEWin32{$ENDIF}
   {$IFDEF ENABLE_SYNAPSE}, kcMapViewerDESynapse{$ENDIF}
   *)
-  ;
+  , Types;
 
 type
 
@@ -46,6 +46,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormDblClick(Sender: TObject);
+    procedure mvMouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     procedure TrackBar1Change(Sender: TObject);
   private
     FDownloader: TCustomDownloadEngine;
@@ -91,6 +93,18 @@ begin
   r := mv.CenterLongLat;
   Label6.Caption := Format('Long: %g', [r.X]);
   Label7.Caption := Format('Lat: %g', [r.Y]);
+end;
+
+procedure TForm1.mvMouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+var
+  z: Integer;
+begin
+  if WheelDelta > 0 then z := mv.Zoom - 1 else z := mv.Zoom + 1;
+  if z < 0 then z := 0;
+  if z > Trackbar1.Max then z := Trackbar1.Max;
+  Trackbar1.Position := z;
+  mv.Zoom := z;
 end;
 
 procedure TForm1.FormDblClick(Sender: TObject);

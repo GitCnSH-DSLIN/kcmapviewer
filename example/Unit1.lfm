@@ -14,10 +14,10 @@ object Form1: TForm1
   OnMouseMove = FormMouseMove
   LCLVersion = '1.9.0.0'
   object mv: TMapViewer
-    Left = 0
-    Height = 537
-    Top = 0
-    Width = 632
+    Left = 8
+    Height = 521
+    Top = 8
+    Width = 622
     AutoZoom = True
     Zoom = 0
     Debug = False
@@ -26,17 +26,20 @@ object Form1: TForm1
     GeolocationEngine = MVGLGeoNames1
     DoubleBuffering = True
     Align = alClient
+    BorderSpacing.Around = 8
     OnMouseMove = FormMouseMove
+    OnMouseWheel = mvMouseWheel
     OnDblClick = FormDblClick
   end
   object Panel1: TPanel
-    Left = 632
+    Left = 638
     Height = 537
     Top = 0
-    Width = 261
+    Width = 255
     Align = alRight
+    AutoSize = True
     ClientHeight = 537
-    ClientWidth = 261
+    ClientWidth = 255
     TabOrder = 1
     object ComboBox1: TComboBox
       AnchorSideLeft.Control = Label1
@@ -47,7 +50,7 @@ object Form1: TForm1
       Left = 67
       Height = 23
       Top = 9
-      Width = 185
+      Width = 179
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Left = 8
       BorderSpacing.Top = 8
@@ -115,7 +118,7 @@ object Form1: TForm1
       Left = 9
       Height = 40
       Top = 63
-      Width = 243
+      Width = 237
       Max = 17
       Position = 0
       TickMarks = tmBoth
@@ -133,13 +136,13 @@ object Form1: TForm1
       Left = 9
       Height = 66
       Top = 259
-      Width = 243
+      Width = 237
       Anchors = [akTop, akLeft, akRight]
       AutoSize = True
       BorderSpacing.Top = 8
       Caption = 'Center'
       ClientHeight = 46
-      ClientWidth = 239
+      ClientWidth = 233
       TabOrder = 3
       object Label6: TLabel
         AnchorSideLeft.Control = GroupBox1
@@ -176,13 +179,13 @@ object Form1: TForm1
       Left = 9
       Height = 66
       Top = 111
-      Width = 243
+      Width = 237
       Anchors = [akTop, akLeft, akRight]
       AutoSize = True
       BorderSpacing.Top = 8
       Caption = 'Screen'
       ClientHeight = 46
-      ClientWidth = 239
+      ClientWidth = 233
       TabOrder = 4
       object Label2: TLabel
         AnchorSideLeft.Control = GroupBox2
@@ -220,13 +223,13 @@ object Form1: TForm1
       Left = 9
       Height = 66
       Top = 185
-      Width = 243
+      Width = 237
       Anchors = [akTop, akLeft, akRight]
       AutoSize = True
       BorderSpacing.Top = 8
       Caption = 'Position'
       ClientHeight = 46
-      ClientWidth = 239
+      ClientWidth = 233
       TabOrder = 5
       object Label4: TLabel
         AnchorSideLeft.Control = GroupBox3
@@ -279,7 +282,7 @@ object Form1: TForm1
       Top = 40
       Width = 87
       BorderSpacing.Left = 16
-      BorderSpacing.Right = 4
+      BorderSpacing.Right = 9
       Caption = 'DblBuffering'
       Checked = True
       OnChange = CheckBox3Change
@@ -291,7 +294,7 @@ object Form1: TForm1
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
-      Left = 191
+      Left = 185
       Height = 25
       Top = 333
       Width = 61
@@ -310,7 +313,7 @@ object Form1: TForm1
       Left = 9
       Height = 23
       Top = 334
-      Width = 174
+      Width = 168
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Top = 4
       BorderSpacing.Right = 8
